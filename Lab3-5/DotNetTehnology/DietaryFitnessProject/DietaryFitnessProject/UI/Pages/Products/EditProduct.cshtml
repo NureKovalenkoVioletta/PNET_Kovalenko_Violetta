@@ -1,0 +1,50 @@
+@page "/Products/Edit/{id:int}"
+@model DietaryFitnessProject.UI.Pages.Products.EditProductModel
+@{
+    ViewData["Title"] = "Редагування продукту";
+}
+
+<div class="page-card page-card--wide">
+    <h1 class="page-title">Редагування продукту</h1>
+    <p class="page-lead">Оновіть дані продукту (на 100 г).</p>
+
+    <form method="post" class="form-stack" novalidate>
+        <input type="hidden" asp-for="Id" />
+        <div asp-validation-summary="ModelOnly" class="validation-summary-errors"></div>
+
+        <div class="form-field">
+            <label asp-for="Input.Name"></label>
+            <input asp-for="Input.Name" />
+            <span asp-validation-for="Input.Name" class="field-error"></span>
+        </div>
+        <div class="form-field">
+            <label asp-for="Input.CaloriesPer100g"></label>
+            <input asp-for="Input.CaloriesPer100g" />
+            <span asp-validation-for="Input.CaloriesPer100g" class="field-error"></span>
+        </div>
+        <div class="form-field">
+            <label asp-for="Input.ProteinsPer100g"></label>
+            <input asp-for="Input.ProteinsPer100g" />
+            <span asp-validation-for="Input.ProteinsPer100g" class="field-error"></span>
+        </div>
+        <div class="form-field">
+            <label asp-for="Input.FatsPer100g"></label>
+            <input asp-for="Input.FatsPer100g" />
+            <span asp-validation-for="Input.FatsPer100g" class="field-error"></span>
+        </div>
+        <div class="form-field">
+            <label asp-for="Input.CarbsPer100g"></label>
+            <input asp-for="Input.CarbsPer100g" />
+            <span asp-validation-for="Input.CarbsPer100g" class="field-error"></span>
+        </div>
+
+        <div class="profile-form__actions">
+            <button type="submit" class="btn btn--primary">Зберегти зміни</button>
+            <a class="btn btn--ghost" href="@Url.Content("~/Products")">Скасувати</a>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="Shared/_ValidationScriptsPartial" />
+}

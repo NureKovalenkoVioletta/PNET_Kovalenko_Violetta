@@ -1,0 +1,109 @@
+is_global = true
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = DietaryFitnessProject
+build_property.RootNamespace = DietaryFitnessProject
+build_property.ProjectDir = C:\Users\Violetta\DotNetTehnology\DietaryFitnessProject\DietaryFitnessProject\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\Violetta\DotNetTehnology\DietaryFitnessProject\DietaryFitnessProject
+build_property._RazorSourceGeneratorDebug = 
+build_property.EffectiveAnalysisLevelStyle = 8.0
+build_property.EnableCodeStyleSeverity = 
+
+[C:/Users/Violetta/AppData/Roaming/SonarLint for Visual Studio/.global/csharp/SonarLint.xml]
+build_metadata.AdditionalFiles.TargetPath = 
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Violetta/DotNetTehnology/DietaryFitnessProject/DietaryFitnessProject/UI/Pages/Auth/Login/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = VUlcUGFnZXNcQXV0aFxMb2dpblxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Violetta/DotNetTehnology/DietaryFitnessProject/DietaryFitnessProject/UI/Pages/Auth/Logout/Logout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = VUlcUGFnZXNcQXV0aFxMb2dvdXRcTG9nb3V0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Violetta/DotNetTehnology/DietaryFitnessProject/DietaryFitnessProject/UI/Pages/Auth/Register/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = VUlcUGFnZXNcQXV0aFxSZWdpc3RlclxSZWdpc3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Violetta/DotNetTehnology/DietaryFitnessProject/DietaryFitnessProject/UI/Pages/DailyPlans/DailyPlans.cshtml]
+build_metadata.AdditionalFiles.TargetPath = VUlcUGFnZXNcRGFpbHlQbGFuc1xEYWlseVBsYW5zLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Violetta/DotNetTehnology/DietaryFitnessProject/DietaryFitnessProject/UI/Pages/DailyPlans/DeletePlan.cshtml]
+build_metadata.AdditionalFiles.TargetPath = VUlcUGFnZXNcRGFpbHlQbGFuc1xEZWxldGVQbGFuLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Violetta/DotNetTehnology/DietaryFitnessProject/DietaryFitnessProject/UI/Pages/DailyPlans/Plan.cshtml]
+build_metadata.AdditionalFiles.TargetPath = VUlcUGFnZXNcRGFpbHlQbGFuc1xQbGFuLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Violetta/DotNetTehnology/DietaryFitnessProject/DietaryFitnessProject/UI/Pages/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = VUlcUGFnZXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Violetta/DotNetTehnology/DietaryFitnessProject/DietaryFitnessProject/UI/Pages/Products/CreateProduct.cshtml]
+build_metadata.AdditionalFiles.TargetPath = VUlcUGFnZXNcUHJvZHVjdHNcQ3JlYXRlUHJvZHVjdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Violetta/DotNetTehnology/DietaryFitnessProject/DietaryFitnessProject/UI/Pages/Products/DeleteProduct.cshtml]
+build_metadata.AdditionalFiles.TargetPath = VUlcUGFnZXNcUHJvZHVjdHNcRGVsZXRlUHJvZHVjdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Violetta/DotNetTehnology/DietaryFitnessProject/DietaryFitnessProject/UI/Pages/Products/EditProduct.cshtml]
+build_metadata.AdditionalFiles.TargetPath = VUlcUGFnZXNcUHJvZHVjdHNcRWRpdFByb2R1Y3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Violetta/DotNetTehnology/DietaryFitnessProject/DietaryFitnessProject/UI/Pages/Products/Products.cshtml]
+build_metadata.AdditionalFiles.TargetPath = VUlcUGFnZXNcUHJvZHVjdHNcUHJvZHVjdHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Violetta/DotNetTehnology/DietaryFitnessProject/DietaryFitnessProject/UI/Pages/Profile/Profile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = VUlcUGFnZXNcUHJvZmlsZVxQcm9maWxlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Violetta/DotNetTehnology/DietaryFitnessProject/DietaryFitnessProject/UI/Pages/Recipes/CreateRecipe.cshtml]
+build_metadata.AdditionalFiles.TargetPath = VUlcUGFnZXNcUmVjaXBlc1xDcmVhdGVSZWNpcGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Violetta/DotNetTehnology/DietaryFitnessProject/DietaryFitnessProject/UI/Pages/Recipes/DeleteRecipe.cshtml]
+build_metadata.AdditionalFiles.TargetPath = VUlcUGFnZXNcUmVjaXBlc1xEZWxldGVSZWNpcGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Violetta/DotNetTehnology/DietaryFitnessProject/DietaryFitnessProject/UI/Pages/Recipes/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = VUlcUGFnZXNcUmVjaXBlc1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Violetta/DotNetTehnology/DietaryFitnessProject/DietaryFitnessProject/UI/Pages/Recipes/EditRecipe.cshtml]
+build_metadata.AdditionalFiles.TargetPath = VUlcUGFnZXNcUmVjaXBlc1xFZGl0UmVjaXBlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Violetta/DotNetTehnology/DietaryFitnessProject/DietaryFitnessProject/UI/Pages/Recipes/Recipes.cshtml]
+build_metadata.AdditionalFiles.TargetPath = VUlcUGFnZXNcUmVjaXBlc1xSZWNpcGVzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Violetta/DotNetTehnology/DietaryFitnessProject/DietaryFitnessProject/UI/Pages/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = VUlcUGFnZXNcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Violetta/DotNetTehnology/DietaryFitnessProject/DietaryFitnessProject/UI/Pages/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = VUlcUGFnZXNcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Violetta/DotNetTehnology/DietaryFitnessProject/DietaryFitnessProject/UI/Pages/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = VUlcUGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Violetta/DotNetTehnology/DietaryFitnessProject/DietaryFitnessProject/UI/Pages/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = VUlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@ViewData["Title"] — Харчовий фітнес</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+    <header class="site-header">
+        <div class="site-header__inner">
+            <a class="site-logo" href="@Url.Content("~/")">Харчовий фітнес</a>
+            <nav class="site-nav" aria-label="Головна навігація">
+                <a href="@Url.Content("~/")">Головна</a>
+                @if (User.Identity?.IsAuthenticated == true)
+                {
+                    <a href="@Url.Content("~/Products")">Продукти</a>
+                    <a href="@Url.Content("~/Recipes")">Рецепти</a>
+                    <a href="@Url.Content("~/DailyPlans")">Денні плани</a>
+                    <a href="@Url.Content("~/Profile")">Мій профіль</a>
+                    <form method="post" action="@Url.Content("~/Auth/Logout")" class="site-nav__form">
+                        @Html.AntiForgeryToken()
+                        <button type="submit" class="btn btn--ghost">Вийти</button>
+                    </form>
+                }
+                else
+                {
+                    <a href="@Url.Content("~/Auth/Login")">Увійти</a>
+                    <a href="@Url.Content("~/Auth/Register")">Реєстрація</a>
+                }
+            </nav>
+        </div>
+    </header>
+    <div class="site-main" role="main">
+        @RenderBody()
+    </div>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

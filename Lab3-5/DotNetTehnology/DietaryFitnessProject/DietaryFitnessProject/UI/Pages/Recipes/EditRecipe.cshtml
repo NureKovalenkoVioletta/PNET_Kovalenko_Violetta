@@ -1,0 +1,78 @@
+@page "/Recipes/Edit/{id:int}"
+@model DietaryFitnessProject.UI.Pages.Recipes.EditRecipeModel
+@{
+    ViewData["Title"] = "Редагування рецепту";
+}
+
+<div class="page-card page-card--extra-wide">
+    <h1 class="page-title">Редагування рецепту</h1>
+    <p class="page-lead">Оновіть дані та склад. Можна додавати рядки кнопкою «Додати ще продукт». Порожні рядки при збереженні не враховуються.</p>
+
+    <form method="post" class="form-stack" novalidate>
+        <input type="hidden" asp-for="Id" />
+        <div asp-validation-summary="All" class="validation-summary-errors"></div>
+
+        <div class="form-field">
+            <label asp-for="Input.RecipeName"></label>
+            <input asp-for="Input.RecipeName" />
+            <span asp-validation-for="Input.RecipeName" class="field-error"></span>
+        </div>
+        <div class="form-field">
+            <label asp-for="Input.Instructions"></label>
+            <textarea asp-for="Input.Instructions" rows="5"></textarea>
+            <span asp-validation-for="Input.Instructions" class="field-error"></span>
+        </div>
+        <div class="form-field">
+            <label asp-for="Input.PortionCount"></label>
+            <input asp-for="Input.PortionCount" />
+            <span asp-validation-for="Input.PortionCount" class="field-error"></span>
+        </div>
+
+        <div class="form-field recipe-ingredients-editor">
+            <span class="form-field__label-like">Інгредієнти</span>
+            <div class="table-wrap">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th style="width:3rem;">#</th>
+                            <th>Продукт</th>
+                            <th class="num" style="width:9rem;">Грами</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    @for (var i = 0; i < Model.IngredientLines.Count; i++)
+                    {
+                        <tr>
+                            <td class="num">@(i + 1)</td>
+                            <td>
+                                <label class="visually-hidden" asp-for="IngredientLines[i].ProductId">Продукт @(i + 1)</label>
+                                <select asp-for="IngredientLines[i].ProductId" asp-items="Model.ProductOptions"></select>
+                            </td>
+                            <td class="num">
+                                <label class="visually-hidden" asp-for="IngredientLines[i].Grams">Грами @(i + 1)</label>
+                                <input asp-for="IngredientLines[i].Grams" type="number" step="0.1" min="0" />
+                            </td>
+                        </tr>
+                    }
+                    </tbody>
+                </table>
+            </div>
+            <div class="recipe-ingredient-actions">
+                <button type="submit" asp-page-handler="AddRow" formnovalidate class="btn btn--ghost">Додати ще продукт</button>
+                @if (Model.IngredientLines.Count > 2)
+                {
+                    <button type="submit" asp-page-handler="RemoveLastRow" formnovalidate class="btn btn--ghost">Прибрати останній рядок</button>
+                }
+            </div>
+        </div>
+
+        <div class="profile-form__actions">
+            <button type="submit" class="btn btn--primary">Зберегти зміни</button>
+            <a class="btn btn--ghost" href="@Url.Content("~/Recipes")">Скасувати</a>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="Shared/_ValidationScriptsPartial" />
+}

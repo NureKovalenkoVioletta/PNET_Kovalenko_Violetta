@@ -1,0 +1,25 @@
+@page
+@model DietaryFitnessProject.UI.Pages.IndexModel
+@{
+    ViewData["Title"] = "Головна";
+}
+
+<section class="hero">
+    <h1>Харчовий фітнес</h1>
+    <p>
+        Плануйте раціон, стежте за харчуванням та цілями.
+    </p>
+    @if (User.Identity?.IsAuthenticated == true)
+    {
+        <div class="hero-actions">
+            <a class="btn btn--primary" href="@Url.Content("~/Profile")">Перейти до профілю</a>
+        </div>
+    }
+    else
+    {
+        <div class="hero-actions">
+            <a class="btn btn--primary" href="@Url.Content("~/Auth/Register")">Створити обліковий запис</a>
+            <a class="btn btn--ghost" href="@Url.Content("~/Auth/Login")">Увійти</a>
+        </div>
+    }
+</section>

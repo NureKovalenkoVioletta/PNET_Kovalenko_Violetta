@@ -1,0 +1,90 @@
+@page "/Recipes/Details/{id:int}"
+@model DietaryFitnessProject.UI.Pages.Recipes.DetailsModel
+@{
+    ViewData["Title"] = Model.Recipe?.RecipeName ?? "Рецепт";
+}
+
+<div class="page-card page-card--extra-wide">
+    <h1 class="page-title">@Model.Recipe!.RecipeName</h1>
+
+    <p class="toolbar">
+        <a class="btn btn--ghost" href="@Url.Content($"~/Recipes/Edit/{Model.Recipe.RecipeId}")">Редагувати</a>
+        <a class="btn btn--ghost" href="@Url.Content("~/Recipes")">Усі рецепти</a>
+    </p>
+
+    <section class="recipe-nutrition-panel" aria-labelledby="nutrition-total">
+        <h2 id="nutrition-total">Всього на рецепт</h2>
+        <dl class="recipe-nutrition-grid">
+            <div>
+                <dt>Калорії, ккал</dt>
+                <dd>@Model.Recipe.RecipeCalories.ToString("0.##")</dd>
+            </div>
+            <div>
+                <dt>Білки, г</dt>
+                <dd>@Model.Recipe.RecipeProteins.ToString("0.##")</dd>
+            </div>
+            <div>
+                <dt>Жири, г</dt>
+                <dd>@Model.Recipe.RecipeFats.ToString("0.##")</dd>
+            </div>
+            <div>
+                <dt>Вуглеводи, г</dt>
+                <dd>@Model.Recipe.RecipeCarbs.ToString("0.##")</dd>
+            </div>
+            <div>
+                <dt>Маса, г</dt>
+                <dd>@Model.Recipe.RecipeTotalGrams.ToString("0.##")</dd>
+            </div>
+        </dl>
+    </section>
+
+    <section class="recipe-nutrition-panel" aria-labelledby="nutrition-portion">
+        <h2 id="nutrition-portion">На одну порцію</h2>
+        <dl class="recipe-nutrition-grid">
+            <div>
+                <dt>Калорії, ккал</dt>
+                <dd>@Model.PerPortionCalories.ToString("0.##")</dd>
+            </div>
+            <div>
+                <dt>Білки, г</dt>
+                <dd>@Model.PerPortionProteins.ToString("0.##")</dd>
+            </div>
+            <div>
+                <dt>Жири, г</dt>
+                <dd>@Model.PerPortionFats.ToString("0.##")</dd>
+            </div>
+            <div>
+                <dt>Вуглеводи, г</dt>
+                <dd>@Model.PerPortionCarbs.ToString("0.##")</dd>
+            </div>
+            <div>
+                <dt>Маса, г</dt>
+                <dd>@Model.PerPortionGrams.ToString("0.##")</dd>
+            </div>
+        </dl>
+    </section>
+
+    <h2 class="page-title" style="font-size:1.15rem; margin-top:1.75rem;">Інструкція</h2>
+    <p style="white-space: pre-wrap; margin:0 0 1.25rem;">@Model.Recipe.RecipeInstructions</p>
+
+    <h2 class="page-title" style="font-size:1.15rem;">Склад</h2>
+    <div class="table-wrap">
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Продукт</th>
+                    <th class="num">Грами</th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach (var line in Model.Recipe.RecipeProducts.OrderBy(rp => rp.Product.ProductName))
+            {
+                <tr>
+                    <td>@line.Product.ProductName</td>
+                    <td class="num">@line.Grams.ToString("0.##")</td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+</div>

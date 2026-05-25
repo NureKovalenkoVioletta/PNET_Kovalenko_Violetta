@@ -1,0 +1,81 @@
+@page "/Auth/Register"
+@model DietaryFitnessProject.UI.Pages.Auth.RegisterModel
+@{
+    ViewData["Title"] = "Реєстрація";
+}
+
+<div class="page-card page-card--wide">
+    <h1 class="page-title">Реєстрація</h1>
+    <p class="page-lead">Створіть обліковий запис і заповніть базові дані профілю.</p>
+
+    <form method="post" class="form-stack" novalidate>
+        <div asp-validation-summary="ModelOnly" class="validation-summary-errors"></div>
+
+        <div class="form-field">
+            <label asp-for="Input.FirstName"></label>
+            <input asp-for="Input.FirstName" autocomplete="given-name" />
+            <span asp-validation-for="Input.FirstName" class="field-error"></span>
+        </div>
+        <div class="form-field">
+            <label asp-for="Input.LastName"></label>
+            <input asp-for="Input.LastName" autocomplete="family-name" />
+            <span asp-validation-for="Input.LastName" class="field-error"></span>
+        </div>
+        <div class="form-field">
+            <label asp-for="Input.Email"></label>
+            <input asp-for="Input.Email" autocomplete="email" />
+            <span asp-validation-for="Input.Email" class="field-error"></span>
+        </div>
+        <div class="form-field">
+            <label asp-for="Input.Password"></label>
+            <input asp-for="Input.Password" autocomplete="new-password" />
+            <span asp-validation-for="Input.Password" class="field-error"></span>
+        </div>
+        <div class="form-field">
+            <label asp-for="Input.ConfirmPassword"></label>
+            <input asp-for="Input.ConfirmPassword" autocomplete="new-password" />
+            <span asp-validation-for="Input.ConfirmPassword" class="field-error"></span>
+        </div>
+        <div class="form-field">
+            <label asp-for="Input.Gender"></label>
+            <select asp-for="Input.Gender" asp-items="Model.GenderOptions"></select>
+            <span asp-validation-for="Input.Gender" class="field-error"></span>
+        </div>
+        <div class="form-field">
+            <label asp-for="Input.Age"></label>
+            <input asp-for="Input.Age" />
+            <span asp-validation-for="Input.Age" class="field-error"></span>
+        </div>
+        <div class="form-field">
+            <label asp-for="Input.Height"></label>
+            <input asp-for="Input.Height" />
+            <span asp-validation-for="Input.Height" class="field-error"></span>
+        </div>
+        <div class="form-field">
+            <label asp-for="Input.Weight"></label>
+            <input asp-for="Input.Weight" />
+            <span asp-validation-for="Input.Weight" class="field-error"></span>
+        </div>
+        <div class="form-field">
+            <label asp-for="Input.ActivityLevel"></label>
+            <select asp-for="Input.ActivityLevel" asp-items="Model.ActivityLevelOptions"></select>
+            <span asp-validation-for="Input.ActivityLevel" class="field-error"></span>
+        </div>
+        <div class="form-field">
+            <label asp-for="Input.Goal"></label>
+            <select asp-for="Input.Goal" asp-items="Model.GoalOptions"></select>
+            <span asp-validation-for="Input.Goal" class="field-error"></span>
+        </div>
+
+        <button type="submit" class="btn btn--primary">Зареєструватися</button>
+    </form>
+
+    <p class="form-footer">
+        Вже маєте обліковий запис?
+        <a href="@Url.Content("~/Auth/Login")">Увійти</a>
+    </p>
+</div>
+
+@section Scripts {
+    <partial name="Shared/_ValidationScriptsPartial" />
+}

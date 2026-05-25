@@ -1,0 +1,166 @@
+@page "/DailyPlans/Plan"
+@model DietaryFitnessProject.UI.Pages.DailyPlans.PlanModel
+@{
+    ViewData["Title"] = "План на день";
+}
+
+<div class="page-card page-card--wide">
+    <h1 class="page-title">План на день</h1>
+
+    <div asp-validation-summary="ModelOnly" class="validation-summary-errors"></div>
+
+    <p class="toolbar">
+        <a class="btn btn--ghost" href="@Url.Content("~/DailyPlans")">Усі плани</a>
+    </p>
+
+    @if (!Model.ShowSavedSummary)
+    {
+        <p class="page-lead">
+            Оберіть дату та кількість прийомів їжі (1–5). Калорії та БЖВ розраховуються з вашого профілю після збереження.
+            На одну дату можна створити лише один план.
+        </p>
+
+        <form method="post" class="form-stack" novalidate>
+            <div asp-validation-summary="ModelOnly" class="validation-summary-errors"></div>
+
+            <div class="form-field">
+                <label asp-for="PlanDate"></label>
+                <input asp-for="PlanDate" type="date" />
+                <span asp-validation-for="PlanDate" class="field-error"></span>
+            </div>
+            <div class="form-field">
+                <label asp-for="MealCount"></label>
+                <select asp-for="MealCount">
+                    @for (var i = 1; i <= 5; i++)
+                    {
+                        <option value="@i">@i</option>
+                    }
+                </select>
+                <span asp-validation-for="MealCount" class="field-error"></span>
+            </div>
+
+            <div class="profile-form__actions">
+                <button type="submit" class="btn btn--primary">Зберегти</button>
+            </div>
+        </form>
+    }
+    else
+    {
+        var p = Model.SavedPlan!;
+        <p class="page-lead">
+            Параметри збереженого плану лише для перегляду. Щоб змінити дату або кількість прийомів їжі, видаліть план у списку «Усі плани» та створіть новий.
+        </p>
+
+        <h2 class="page-title" style="font-size:1.15rem;margin:0 0 0.75rem;">Збережений план</h2>
+
+        <dl class="profile-readonly">
+            <div class="profile-readonly__row">
+                <dt>@Html.DisplayNameFor(m => m.PlanDate)</dt>
+                <dd>@p.DailyPlanDay.ToString("yyyy-MM-dd")</dd>
+            </div>
+            <div class="profile-readonly__row">
+                <dt>@Html.DisplayNameFor(m => m.MealCount)</dt>
+                <dd>@p.DailyPlanNumberOfMeals</dd>
+            </div>
+            <div class="profile-readonly__row">
+                <dt>Калорії, ккал</dt>
+                <dd>@p.DailyPlanCalories.ToString("0.##")</dd>
+            </div>
+            <div class="profile-readonly__row">
+                <dt>Білки, г</dt>
+                <dd>@p.DailyPlanProteins.ToString("0.##")</dd>
+            </div>
+            <div class="profile-readonly__row">
+                <dt>Жири, г</dt>
+                <dd>@p.DailyPlanFats.ToString("0.##")</dd>
+            </div>
+            <div class="profile-readonly__row">
+                <dt>Вуглеводи, г</dt>
+                <dd>@p.DailyPlanCarbs.ToString("0.##")</dd>
+            </div>
+        </dl>
+    }
+
+    @if (Model.ShowSavedSummary && Model.SavedPlan is not null)
+    {
+        var p = Model.SavedPlan;
+        @if (Model.GeneratedMeals.Count > 0)
+        {
+            <form method="post" asp-page-handler="DeleteMeals" class="profile-form__actions">
+                <input type="hidden" name="dailyDietPlanId" value="@p.DailyDietPlanId" />
+                <button type="submit" class="btn btn--primary">Видалити згенеровані прийоми їжі</button>
+            </form>
+        }
+        else
+        {
+            <form method="post" asp-page-handler="GenerateMeals" class="profile-form__actions">
+                <input type="hidden" name="dailyDietPlanId" value="@p.DailyDietPlanId" />
+                <button type="submit" class="btn btn--primary">Згенерувати прийоми їжі</button>
+            </form>
+        }
+    }
+</div>
+
+@if (Model.GeneratedMeals.Count > 0)
+{
+    <div class="page-card page-card--extra-wide">
+        <h2 class="page-title" style="font-size:1.2rem;">Згенеровані прийоми їжі</h2>
+        <div class="table-wrap">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Тип</th>
+                        <th>Час</th>
+                        <th>Рецепти</th>
+                        <th class="num">Порцій</th>
+                        <th class="num">Грами</th>
+                        <th class="num">ккал</th>
+                        <th class="num">Б</th>
+                        <th class="num">Ж</th>
+                        <th class="num">В</th>
+                    </tr>
+                </thead>
+                <tbody>
+                @foreach (var m in Model.GeneratedMeals)
+                {
+                    <tr>
+                        <td class="num">@m.MealOrder</td>
+                        <td>@m.MealTypeLabel</td>
+                        <td>@m.MealTime.ToString("HH\\:mm")</td>
+                        <td>
+                            @for (var i = 0; i < m.Recipes.Count; i++)
+                            {
+                                var recipe = m.Recipes[i];
+                                if (recipe.RecipeId > 0)
+                                {
+                                    <a class="link-action" href="@Url.Content($"~/Recipes/Details/{recipe.RecipeId}")">@recipe.RecipeName</a>
+                                }
+                                else
+                                {
+                                    @recipe.RecipeName
+                                }
+
+                                @if (i < m.Recipes.Count - 1)
+                                {
+                                    <text>, </text>
+                                }
+                            }
+                        </td>
+                        <td class="num">@m.Portions.ToString("0.##")</td>
+                        <td class="num">@m.Grams.ToString("0.#")</td>
+                        <td class="num">@m.Calories.ToString("0.##")</td>
+                        <td class="num">@m.Proteins.ToString("0.##")</td>
+                        <td class="num">@m.Fats.ToString("0.##")</td>
+                        <td class="num">@m.Carbs.ToString("0.##")</td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    <partial name="Shared/_ValidationScriptsPartial" />
+}

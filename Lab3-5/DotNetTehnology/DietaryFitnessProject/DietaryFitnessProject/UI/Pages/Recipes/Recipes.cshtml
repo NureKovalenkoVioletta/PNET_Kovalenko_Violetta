@@ -1,0 +1,53 @@
+@page "/Recipes"
+@model DietaryFitnessProject.UI.Pages.Recipes.RecipesModel
+@{
+    ViewData["Title"] = "Рецепти";
+}
+
+<div class="page-card page-card--wide">
+    <h1 class="page-title">Рецепти</h1>
+    <p class="page-lead">Рецепти з інгредієнтами та підсумковою харчовою цінністю.</p>
+
+    <p class="toolbar">
+        <a class="btn btn--primary" href="@Url.Content("~/Recipes/Create")">Додати рецепт</a>
+    </p>
+
+    @if (Model.RecipeList.Count == 0)
+    {
+        <p class="empty-state">Рецептів ще немає. Створіть перший запис.</p>
+    }
+    else
+    {
+        <div class="table-wrap">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Назва</th>
+                        <th class="num">Порцій</th>
+                        <th class="num">ккал (всього)</th>
+                        <th class="num">Грами</th>
+                        <th class="actions">Дії</th>
+                    </tr>
+                </thead>
+                <tbody>
+                @foreach (var r in Model.RecipeList)
+                {
+                    <tr>
+                        <td>@r.RecipeName</td>
+                        <td class="num">@r.PortionCount</td>
+                        <td class="num">@r.RecipeCalories.ToString("0.##")</td>
+                        <td class="num">@r.RecipeTotalGrams.ToString("0.##")</td>
+                        <td class="actions">
+                            <a class="link-action" href="@Url.Content($"~/Recipes/Details/{r.RecipeId}")">Перегляд</a>
+                            <span class="sep">·</span>
+                            <a class="link-action" href="@Url.Content($"~/Recipes/Edit/{r.RecipeId}")">Змінити</a>
+                            <span class="sep">·</span>
+                            <a class="link-action link-action--danger" href="@Url.Content($"~/Recipes/Delete/{r.RecipeId}")">Видалити</a>
+                        </td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    }
+</div>

@@ -1,0 +1,25 @@
+@page "/DailyPlans/Delete/{id:int}"
+@model DietaryFitnessProject.UI.Pages.DailyPlans.DeletePlanModel
+@{
+    ViewData["Title"] = "Видалення денного плану";
+}
+
+<div class="page-card">
+    <h1 class="page-title">Видалити денний план?</h1>
+    <p class="page-lead">
+        Буде видалено план на <strong>@Model.Plan?.DailyPlanDay.ToString("dd.MM.yyyy")</strong>
+        (@Model.Plan?.DailyPlanCalories.ToString("0.##") ккал, @Model.Plan?.DailyPlanNumberOfMeals прийомів їжі).
+    </p>
+    @if (Model.HasGeneratedMeals)
+    {
+        <p class="page-lead">
+            Також будуть видалені всі згенеровані прийоми їжі та прив’язані рецепти для цього плану.
+        </p>
+    }
+
+    <form method="post" class="profile-form__actions">
+        <input type="hidden" asp-for="Id" />
+        <button type="submit" class="btn btn--danger">Так, видалити</button>
+        <a class="btn btn--ghost" href="@Url.Content("~/DailyPlans")">Ні, повернутися</a>
+    </form>
+</div>
